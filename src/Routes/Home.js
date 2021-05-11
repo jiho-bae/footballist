@@ -11,7 +11,6 @@ class Home extends React.Component {
     let { data: videos } = await axios.get(
       "https://www.scorebat.com/video-api/v1/"
     );
-
     console.log(videos);
     this.setState({ loading: false, videos });
   }
@@ -22,14 +21,24 @@ class Home extends React.Component {
         {loading ? (
           <span>loading...</span>
         ) : (
-          <>
+          <div className="videos-container">
             <h1>Weekly Highlights😍</h1>
-            <div className="video-container">
+            <div className="videos-lists">
               {videos.map((video, idx) => (
-                <Link to="#" key={idx} style={{ textDecoration: "none" }}>
+                <Link
+                  to={{
+                    pathname: `/${idx}`,
+                    state: {
+                      video,
+                    },
+                  }}
+                  key={idx}
+                  style={{ textDecoration: "none" }}
+                  you={video}
+                >
                   <section>
                     <div
-                      className="video-thumbnail"
+                      className="videos-thumbnail"
                       style={{
                         backgroundColor: "grey",
                         backgroundImage: `url(${video.thumbnail})`,
@@ -39,7 +48,7 @@ class Home extends React.Component {
                         height: "200px",
                       }}
                     ></div>
-                    <div className="video-info">
+                    <div className="videos-info">
                       <span>
                         {video.side1.name} vs {video.side2.name}
                       </span>
@@ -52,7 +61,7 @@ class Home extends React.Component {
                 </Link>
               ))}
             </div>
-          </>
+          </div>
         )}
       </div>
     );
