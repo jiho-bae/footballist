@@ -1,7 +1,18 @@
 # Football Highlights
 
-https://www.scorebat.com/video-api/ 에서 제공하는 api를 이용해 축구 하이라이트를 모아 보여주는 사이트를 만들어 볼 것.
+축구 하이라이트 비디오 서비스
 
-# Preview:
+# 📌 프로젝트 사용 기술
 
-(Test) Try it on [netlify](https://football-highlights.netlify.app)
+- React
+- REST API
+- [ScoreBat](https://www.scorebat.com/video-api/) 데이터
+
+# 📌 목적
+
+- 매일 업데이트 되는 축구 하이라이트 API를 발견
+- 간단한 사이트로 만들어 이용해보고자 프로젝트를 진행
+
+# 📌 Preview:
+
+[Netlify](https://football-highlights.netlify.app)에서 체험해보기
