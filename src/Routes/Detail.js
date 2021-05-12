@@ -32,7 +32,7 @@ class Detail extends React.Component {
         <div className="detail-competition">
           <h3>{video.competition.name}</h3>
           <a href={video.competition.url}>
-            {`${video.competition.name.split(":")[0]} League Matches Schedule`}
+            {`${video.competition.name.split(":")[0]} League Matches`}
           </a>
         </div>
         <div
@@ -48,12 +48,12 @@ class Detail extends React.Component {
             <div>
               <h4>Home</h4>
               <span>{video.side1.name}</span>
-              <a href={video.side1.url}>{video.side1.name} Matches Schedule</a>
+              <a href={video.side1.url}>{video.side1.name} Matches</a>
             </div>
             <div>
               <h4>Away</h4>
               <span>{video.side2.name}</span>
-              <a href={video.side2.url}>{video.side2.name} Matches Schedule</a>
+              <a href={video.side2.url}>{video.side2.name} Matches</a>
             </div>
           </div>
         </div>

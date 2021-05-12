@@ -19,10 +19,10 @@ class Home extends React.Component {
     return (
       <div className="App">
         {loading ? (
-          <span>loading...</span>
+          <span>Loading Videos...</span>
         ) : (
           <div className="videos-container">
-            <h1>Weekly Highlights😍</h1>
+            <h2>Weekly Football Highlights 😍</h2>
             <div className="videos-lists">
               {videos.map((video, idx) => (
                 <Link
@@ -44,7 +44,7 @@ class Home extends React.Component {
                         backgroundImage: `url(${video.thumbnail})`,
                         backgroundPosition: "center",
                         backgroundSize: "cover",
-                        width: "100%",
+                        width: "300px",
                         height: "200px",
                       }}
                     ></div>
