@@ -11,7 +11,6 @@ class Home extends React.Component {
     let { data: videos } = await axios.get(
       "https://www.scorebat.com/video-api/v1/"
     );
-    console.log(videos);
     this.setState({ loading: false, videos });
   }
   render() {

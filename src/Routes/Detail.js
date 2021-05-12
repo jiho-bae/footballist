@@ -4,18 +4,26 @@ import { Link } from "react-router-dom";
 class Detail extends React.Component {
   constructor(props) {
     super(props);
-    const {
-      location: {
-        state: { video },
-      },
-    } = props;
-    this.state = {
-      video,
-    };
+    try {
+      const {
+        location: {
+          state: { video },
+        },
+      } = props;
+      this.state = {
+        video,
+      };
+    } catch (error) {
+      console.log(error);
+      this.state = {
+        video: {},
+      };
+    }
   }
+
   render() {
     const { video } = this.state;
-    return (
+    return video.date ? (
       <div className="detail-container">
         <div className="detail-link">
           <Link
@@ -25,10 +33,10 @@ class Detail extends React.Component {
               color: "black",
             }}
           >
-            뒤로 가기
+            Back
           </Link>
         </div>
-        <h1>{video.title}</h1>
+        <h1 className="detail-title">{video.title}</h1>
         <div className="detail-competition">
           <h3>{video.competition.name}</h3>
           <a href={video.competition.url}>
@@ -58,7 +66,7 @@ class Detail extends React.Component {
           </div>
         </div>
       </div>
-    );
+    ) : null;
   }
 }
 export default Detail;
