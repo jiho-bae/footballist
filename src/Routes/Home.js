@@ -8,9 +8,21 @@ function Home() {
     videos: [],
   });
 
-  useEffect(async () => {
-    let { data: videos } = await axios.get('https://www.scorebat.com/video-api/v1/');
-    setState({ loading: false, videos });
+  useEffect(() => {
+    async function getVideos() {
+      let videos = [];
+
+      try {
+        let { data } = await axios.get('https://www.scorebat.com/video-api/v1/');
+        videos = data;
+      } catch (e) {
+        console.log(e);
+      } finally {
+        setState({ loading: false, videos });
+      }
+    }
+
+    getVideos();
   }, []);
 
   const { loading, videos } = state;
@@ -24,17 +36,7 @@ function Home() {
           <h2>Weekly Football Highlights 😍</h2>
           <div className="videos-lists">
             {videos.map((video, idx) => (
-              <Link
-                to={{
-                  pathname: `/${idx}`,
-                  state: {
-                    video,
-                  },
-                }}
-                key={idx}
-                style={{ textDecoration: 'none' }}
-                you={video}
-              >
+              <Link to={`/${idx}`} state={{ video }} key={idx} style={{ textDecoration: 'none' }} you={video}>
                 <section>
                   <div
                     className="videos-thumbnail"

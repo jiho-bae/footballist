@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-function Detail(props) {
-  const video = props?.location?.state?.video ?? {};
+function Detail() {
+  const location = useLocation();
+  const video = location?.state?.video ?? {};
 
   return video.date ? (
     <div className="detail-container">
