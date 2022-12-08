@@ -4,7 +4,7 @@
 
 # 📌 Preview:
 
-[Footballist](https://football-highlights.netlify.app) 체험하기
+[Footballist](https://footballist.netlify.app) 체험하기
 
 # 📌 목적
 
