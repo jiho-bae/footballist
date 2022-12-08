@@ -1,9 +1,9 @@
-import React from "react";
-import { HashRouter as HRouter, Route, Redirect } from "react-router-dom";
-import Home from "../Routes/Home";
-import Detail from "../Routes/Detail";
+import React from 'react';
+import { HashRouter as HRouter, Route, Redirect } from 'react-router-dom';
+import Home from '../Routes/Home';
+import Detail from '../Routes/Detail';
 
-const Router = () => {
+function Router() {
   return (
     <HRouter>
       <Route path="/" exact component={Home} />
@@ -11,6 +11,6 @@ const Router = () => {
       <Redirect path="*" to="/" />
     </HRouter>
   );
-};
+}
 
 export default Router;
