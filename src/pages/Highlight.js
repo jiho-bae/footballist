@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-function Detail() {
+function Highlight() {
   const location = useLocation();
   const video = location?.state?.video ?? {};
 
@@ -45,4 +45,4 @@ function Detail() {
     </div>
   ) : null;
 }
-export default Detail;
+export default Highlight;

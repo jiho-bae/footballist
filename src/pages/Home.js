@@ -36,7 +36,13 @@ function Home() {
           <h2>Weekly Football Highlights 😍</h2>
           <div className="videos-lists">
             {videos.map((video, idx) => (
-              <Link to={`/${idx}`} state={{ video }} key={idx} style={{ textDecoration: 'none' }} you={video}>
+              <Link
+                to={`/highlights/${idx}`}
+                state={{ video }}
+                key={idx}
+                style={{ textDecoration: 'none' }}
+                you={video}
+              >
                 <section>
                   <div
                     className="videos-thumbnail"

@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from '../Routes/Home';
-import Detail from '../Routes/Detail';
+import Home from '../pages/Home';
+import HighLight from '../pages/Highlight';
 
 function Router() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/:id" element={<Detail />} />
+        <Route path="/highlights/:id" element={<HighLight />} />
       </Routes>
     </BrowserRouter>
   );
