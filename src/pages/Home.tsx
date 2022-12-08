@@ -1,9 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+export interface VideoType {
+  competition: CompetitionType;
+  date: string;
+  embed: string;
+  side1: MatchSideType;
+  side2: MatchSideType;
+  thumbnail: string;
+  title: string;
+  url: string;
+  videos: VideoTagType[];
+}
+
+interface CompetitionType extends MatchSideType {
+  id: number;
+}
+
+interface MatchSideType {
+  name: string;
+  url: string;
+}
+
+interface VideoTagType {
+  title: string;
+  embed: string;
+}
+
 function Home() {
-  const [state, setState] = useState({
+  const [state, setState] = useState<{
+    loading: boolean;
+    videos: VideoType[];
+  }>({
     loading: true,
     videos: [],
   });
@@ -36,13 +65,7 @@ function Home() {
           <h2>Weekly Football Highlights 😍</h2>
           <div className="videos-lists">
             {videos.map((video, idx) => (
-              <Link
-                to={`/highlights/${idx}`}
-                state={{ video }}
-                key={idx}
-                style={{ textDecoration: 'none' }}
-                you={video}
-              >
+              <Link to={`/highlights/${idx}`} state={{ video }} key={idx} style={{ textDecoration: 'none' }}>
                 <section>
                   <div
                     className="videos-thumbnail"

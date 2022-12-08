@@ -1,9 +1,9 @@
-import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { VideoType } from './Home';
 
 function Highlight() {
   const location = useLocation();
-  const video = location?.state?.video ?? {};
+  const video: VideoType = location?.state?.video ?? {};
 
   return video.date ? (
     <div className="detail-container">
