@@ -61,28 +61,26 @@ function Home() {
       {loading ? (
         <span>Loading Videos...</span>
       ) : (
-        <div className="videos-container">
-          <h2>Weekly Football Highlights 😍</h2>
-          <div className="videos-lists">
+        <div className="px-4 py-0">
+          <h2 className="text-4xl">Weekly Football Highlights 😍</h2>
+          <div className="w-full grid grid-cols-video-lists gap-8">
             {videos.map((video, idx) => (
               <Link to={`/highlights/${idx}`} state={{ video }} key={idx} style={{ textDecoration: 'none' }}>
-                <section>
+                <section className="w-full cursor-pointer">
                   <div
-                    className="videos-thumbnail"
+                    className="hover:opacity-70 bg-zinc-300 bg-center bg-cover w-30 h-80"
                     style={{
-                      backgroundColor: 'grey',
                       backgroundImage: `url(${video.thumbnail})`,
-                      backgroundPosition: 'center',
-                      backgroundSize: 'cover',
-                      width: '300px',
-                      height: '200px',
                     }}
                   ></div>
-                  <div className="videos-info">
-                    <span>
+                  <div className="flex flex-col">
+                    <span className="color-black text-2xl">
                       {video.side1.name} vs {video.side2.name}
                     </span>
-                    <span>{`${video.date.slice(2, 4)}.${video.date.slice(5, 7)}.${video.date.slice(8, 10)}`}</span>
+                    <span className="text-neutral-500 text-xl">{`${video.date.slice(2, 4)}.${video.date.slice(
+                      5,
+                      7
+                    )}.${video.date.slice(8, 10)}`}</span>
                   </div>
                 </section>
               </Link>
