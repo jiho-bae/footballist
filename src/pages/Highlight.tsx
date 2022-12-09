@@ -1,6 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
 import { VideoType } from './Home';
 
+import { dateToLocaleString } from '../libs/utilFns';
+
 function Highlight() {
   const location = useLocation();
   const video: VideoType = location?.state?.video ?? {};
@@ -25,10 +27,7 @@ function Highlight() {
       </div>
       <div className="mt-5" dangerouslySetInnerHTML={{ __html: video.videos[0].embed }}></div>
       <div className="flex flex-col">
-        <span className="text-zinc-500 text-2xl mx-0 my-3 pb-3 ">{`${video.date.slice(2, 4)}.${video.date.slice(
-          5,
-          7
-        )}.${video.date.slice(8, 10)}`}</span>
+        <span className="text-zinc-500 text-2xl mx-0 my-3 pb-3 ">{dateToLocaleString(video.date)}</span>
         <div className="flex justify-between text-2xl">
           {[video.side1, video.side2].map((side, idx) => (
             <div className="flex flex-col items-center max-w-xs">
