@@ -54,7 +54,6 @@ function Home() {
         <span>Loading Videos...</span>
       ) : (
         <div className="px-4 py-0">
-          <h2 className="text-4xl">Weekly Football Highlights 😍</h2>
           <div className="w-full grid grid-cols-video-lists gap-8">
             {videos.map((video, idx) => (
               <Link to={`/highlights/${idx}`} state={{ video }} key={video.title} style={{ textDecoration: 'none' }}>
