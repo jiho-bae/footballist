@@ -32,13 +32,7 @@ interface VideoTagType {
 }
 
 function Home() {
-  const [state, setState] = useState<{
-    loading: boolean;
-    videos: VideoType[];
-  }>({
-    loading: true,
-    videos: [],
-  });
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedDate, setSelectedDate] = useState(new Date().toLocaleDateString());
   const [prevDates, setPrevDates] = useState(getPrevDatesFromToday(7));
   const [displayVideos, setDisplayVideos] = useState<PrevDatesVideosType>({});
@@ -50,16 +44,14 @@ function Home() {
   useEffect(() => {
     (async function () {
       const videos = await getVideos('https://www.scorebat.com/video-api/v1/');
-      setState({ loading: false, videos });
+      setIsLoading(false);
       setDisplayVideos(getPrevDatesVideos(videos, prevDates));
     })();
   }, [prevDates]);
 
-  const { loading } = state;
-
   return (
     <div className="App">
-      {loading ? (
+      {isLoading ? (
         <span>Loading Videos...</span>
       ) : (
         <div className="px-4 py-0">
