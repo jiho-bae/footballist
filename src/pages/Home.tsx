@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
 import getVideos from '../api/getVideos';
+import HighlightFilter from '../components/Filter';
 import HighlightGrid from '../components/HighlightGrid';
-import { REST_DATE } from '../libs/constant';
-import { getPrevDatesFromToday, PrevDatesVideosType, getPrevDatesVideos, getPrevDateFromToday } from '../libs/utilFns';
+import { getPrevDatesFromToday, PrevDatesVideosType, getPrevDatesVideos } from '../libs/utilFns';
 
 export interface VideoType {
   competition: CompetitionType;
@@ -55,16 +55,7 @@ function Home() {
         <span>Loading Videos...</span>
       ) : (
         <div className="px-4 py-0">
-          <div className="flex justify-end mb-4">
-            <select className="cursor-pointer text-3xl outline-none" onChange={onChangeSelect}>
-              {prevDates.map((date) => (
-                <option key={date} value={date}>
-                  {date}
-                </option>
-              ))}
-              <option value={REST_DATE}>{`~ ${getPrevDateFromToday(7)}`}</option>
-            </select>
-          </div>
+          <HighlightFilter prevDates={prevDates} onChange={onChangeSelect} />
           <HighlightGrid displayVideos={displayVideos[selectedDate]} />
         </div>
       )}
