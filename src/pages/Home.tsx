@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import getVideos from '../api/getVideos';
-import { dateToLocaleString } from '../libs/utilFns';
+import { dateToLocaleString, getPrevDatesFromToday, PrevDatesVideosType, getPrevDatesVideos } from '../libs/utilFns';
 
 export interface VideoType {
   competition: CompetitionType;
@@ -38,15 +38,19 @@ function Home() {
     loading: true,
     videos: [],
   });
+  const [selectedDate, setSelectedDate] = useState(new Date().toLocaleDateString());
+  const [prevDates, setPrevDates] = useState(getPrevDatesFromToday(7));
+  const [displayVideos, setDisplayVideos] = useState<PrevDatesVideosType>({});
 
   useEffect(() => {
     (async function () {
       const videos = await getVideos('https://www.scorebat.com/video-api/v1/');
       setState({ loading: false, videos });
+      setDisplayVideos(getPrevDatesVideos(videos, prevDates));
     })();
-  }, []);
+  }, [prevDates]);
 
-  const { loading, videos } = state;
+  const { loading } = state;
 
   return (
     <div className="App">
@@ -55,7 +59,7 @@ function Home() {
       ) : (
         <div className="px-4 py-0">
           <div className="w-full grid grid-cols-video-lists gap-8">
-            {videos.map((video, idx) => (
+            {displayVideos[selectedDate].map((video, idx) => (
               <Link to={`/highlights/${idx}`} state={{ video }} key={video.title} style={{ textDecoration: 'none' }}>
                 <section className="w-full cursor-pointer">
                   <div
