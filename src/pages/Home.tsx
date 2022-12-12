@@ -2,7 +2,14 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import getVideos from '../api/getVideos';
-import { dateToLocaleString, getPrevDatesFromToday, PrevDatesVideosType, getPrevDatesVideos } from '../libs/utilFns';
+import { REST_DATE } from '../libs/constant';
+import {
+  dateToLocaleString,
+  getPrevDatesFromToday,
+  PrevDatesVideosType,
+  getPrevDatesVideos,
+  getPrevDateFromToday,
+} from '../libs/utilFns';
 
 export interface VideoType {
   competition: CompetitionType;
@@ -42,6 +49,10 @@ function Home() {
   const [prevDates, setPrevDates] = useState(getPrevDatesFromToday(7));
   const [displayVideos, setDisplayVideos] = useState<PrevDatesVideosType>({});
 
+  function onChangeSelect(e: React.ChangeEvent<HTMLSelectElement>) {
+    setSelectedDate(e.target.value);
+  }
+
   useEffect(() => {
     (async function () {
       const videos = await getVideos('https://www.scorebat.com/video-api/v1/');
@@ -58,6 +69,16 @@ function Home() {
         <span>Loading Videos...</span>
       ) : (
         <div className="px-4 py-0">
+          <div className="flex justify-end mb-4">
+            <select className="cursor-pointer text-3xl outline-none" onChange={onChangeSelect}>
+              {prevDates.map((date) => (
+                <option key={date} value={date}>
+                  {date}
+                </option>
+              ))}
+              <option value={REST_DATE}>{`~ ${getPrevDateFromToday(7)}`}</option>
+            </select>
+          </div>
           <div className="w-full grid grid-cols-video-lists gap-8">
             {displayVideos[selectedDate].map((video, idx) => (
               <Link to={`/highlights/${idx}`} state={{ video }} key={video.title} style={{ textDecoration: 'none' }}>

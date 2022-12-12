@@ -9,6 +9,13 @@ export function indexOfPathname(pathname: string) {
   return Object.values(PAGE_PATH).indexOf(pathname);
 }
 
+export function getPrevDateFromToday(length: number) {
+  const now = new Date();
+  now.setDate(now.getDate() - length);
+
+  return now.toLocaleDateString();
+}
+
 export function getPrevDatesFromToday(length: number) {
   let now = new Date();
   const dates = [];
