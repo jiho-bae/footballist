@@ -34,6 +34,7 @@ interface VideoTagType {
 function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedDate, setSelectedDate] = useState(new Date().toLocaleDateString());
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [prevDates, setPrevDates] = useState(getPrevDatesFromToday(7));
   const [displayVideos, setDisplayVideos] = useState<PrevDatesVideosType>({});
 
@@ -55,7 +56,7 @@ function Home() {
         <span>Loading Videos...</span>
       ) : (
         <div className="px-4 py-0">
-          <HighlightFilter prevDates={prevDates} onChange={onChangeSelect} />
+          <HighlightFilter prevDates={prevDates} selectedDate={selectedDate} onChange={onChangeSelect} />
           <HighlightGrid displayVideos={displayVideos[selectedDate]} />
         </div>
       )}
