@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 import getVideos from '../api/getVideos';
-import { dateToLocaleString } from '../libs/utilFns';
+import HighlightFilter from '../components/Filter';
+import HighlightGrid from '../components/HighlightGrid';
+import { getPrevDatesFromToday, PrevDatesVideosType, getPrevDatesVideos } from '../libs/utilFns';
 
 export interface VideoType {
   competition: CompetitionType;
@@ -31,49 +32,32 @@ interface VideoTagType {
 }
 
 function Home() {
-  const [state, setState] = useState<{
-    loading: boolean;
-    videos: VideoType[];
-  }>({
-    loading: true,
-    videos: [],
-  });
+  const [isLoading, setIsLoading] = useState(true);
+  const [selectedDate, setSelectedDate] = useState(new Date().toLocaleDateString());
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [prevDates, setPrevDates] = useState(getPrevDatesFromToday(7));
+  const [displayVideos, setDisplayVideos] = useState<PrevDatesVideosType>({});
+
+  function onChangeSelect(e: React.ChangeEvent<HTMLSelectElement>) {
+    setSelectedDate(e.target.value);
+  }
 
   useEffect(() => {
     (async function () {
       const videos = await getVideos('https://www.scorebat.com/video-api/v1/');
-      setState({ loading: false, videos });
+      setIsLoading(false);
+      setDisplayVideos(getPrevDatesVideos(videos, prevDates));
     })();
-  }, []);
-
-  const { loading, videos } = state;
+  }, [prevDates]);
 
   return (
     <div className="App">
-      {loading ? (
+      {isLoading ? (
         <span>Loading Videos...</span>
       ) : (
         <div className="px-4 py-0">
-          <div className="w-full grid grid-cols-video-lists gap-8">
-            {videos.map((video, idx) => (
-              <Link to={`/highlights/${idx}`} state={{ video }} key={video.title} style={{ textDecoration: 'none' }}>
-                <section className="w-full cursor-pointer">
-                  <div
-                    className="hover:opacity-70 bg-zinc-300 bg-center bg-cover w-30 h-80"
-                    style={{
-                      backgroundImage: `url(${video.thumbnail})`,
-                    }}
-                  ></div>
-                  <div className="flex flex-col">
-                    <span className="color-black text-2xl">
-                      {video.side1.name} vs {video.side2.name}
-                    </span>
-                    <span className="text-neutral-500 text-xl">{dateToLocaleString(video.date)}</span>
-                  </div>
-                </section>
-              </Link>
-            ))}
-          </div>
+          <HighlightFilter prevDates={prevDates} selectedDate={selectedDate} onChange={onChangeSelect} />
+          <HighlightGrid displayVideos={displayVideos[selectedDate]} />
         </div>
       )}
     </div>

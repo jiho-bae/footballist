@@ -15,3 +15,5 @@ export const PAGE_NAME = {
 };
 
 export const PAGES = ['home', 'league', 'team'] as PAGE_TYPE[];
+
+export const REST_DATE = 'rest';
