@@ -9,6 +9,10 @@ module.exports = {
       colors: {
         'main-blue': 'cornflowerblue',
         'main-red': 'tomato',
+        'main-brown': '#854d0e',
+      },
+      maxWidth: {
+        '4/5': '80%',
       },
     },
   },
