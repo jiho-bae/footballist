@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import HighlightFilter from '../components/Filter';
 import HighlightGrid from '../components/HighlightGrid';
-import { videoState } from '../recoils/video';
+import { videoState } from '../recoils';
 import { getPrevDatesFromToday, getPrevDatesVideos } from '../libs/utilFns';
 import { useRecoilValue } from 'recoil';
 

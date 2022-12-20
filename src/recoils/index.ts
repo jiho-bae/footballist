@@ -1,1 +1,1 @@
-import { videoState } from './video';
+export { videoState } from './video';

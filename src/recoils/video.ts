@@ -1,5 +1,5 @@
 import { selector } from 'recoil';
-import getVideos from '../api/getVideos';
+import { getVideos } from '../api';
 
 export const videoState = selector({
   key: 'video/get',

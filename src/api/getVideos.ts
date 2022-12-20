@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default async function getVideos(url: string) {
+export async function getVideos(url: string) {
   let videos = [];
 
   try {
