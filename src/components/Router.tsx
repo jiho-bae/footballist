@@ -1,8 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Header from './Header';
+import { Suspense } from 'react';
+
 import Home from '../pages/Home';
 import HighLight from '../pages/Highlight';
-import { Suspense } from 'react';
+import League from '../pages/League';
+
+import Header from './Header';
 import Loader from './Loader';
 
 function Router() {
@@ -13,6 +16,7 @@ function Router() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/highlights/:id" element={<HighLight />} />
+          <Route path="/league" element={<League />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
