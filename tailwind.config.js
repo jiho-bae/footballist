@@ -20,6 +20,9 @@ module.exports = {
         'division-diff2': '14%',
         'division-diff': '14%',
         'division-rest': '7%',
+        'score-player': '34%',
+        'score-team': '30%',
+        'score-rest': '12%',
       },
       height: {
         '80vh': '80vh',
