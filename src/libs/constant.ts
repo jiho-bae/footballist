@@ -29,3 +29,8 @@ export const HEADER_NAME_STYLES: { [key: string]: string } = {
   득실차: 'diff',
   나머지: 'rest',
 };
+
+export const TABLE_NAMES = {
+  standings: 'standings',
+  scorers: 'scorers',
+};
