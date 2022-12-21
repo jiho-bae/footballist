@@ -1,3 +1,5 @@
+import { TableType } from '../components/Table';
+
 export type PAGE_TYPE = 'home' | 'league' | 'team' | 'highlight';
 
 export const PAGE_PATH = {
@@ -30,7 +32,7 @@ export const HEADER_NAME_STYLES: { [key: string]: string } = {
   나머지: 'rest',
 };
 
-export const TABLE_NAMES = {
+export const TABLE_NAMES: { [key: string]: TableType } = {
   standings: 'standings',
   scorers: 'scorers',
 };
