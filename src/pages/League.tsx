@@ -1,3 +1,4 @@
+import Space from '../components/Space';
 import Table from '../components/Table';
 import division from '../dummy/division.json';
 import topScorers from '../dummy/scorers.json';
@@ -27,6 +28,7 @@ function League() {
         </div>
       </header>
       <Table tableType={TABLE_NAMES.standings} isOverflow={true} records={total.table} />
+      <Space />
       <Table tableType={TABLE_NAMES.scorers} records={scorers} />
     </main>
   );
