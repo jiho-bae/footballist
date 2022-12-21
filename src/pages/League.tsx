@@ -1,9 +1,9 @@
 import division from '../dummy/division.json';
 import topScorers from '../dummy/scorers.json';
+import { TABLE_HEADERS } from '../libs/constant';
+import { headerWidth } from '../libs/styleFns';
 
 function League() {
-  const tableHeaders = ['순위', '팀명', '경기', '승점', '승', '무', '패', '득', '실', '득실차'];
-  const scoreTableHeaders = ['순위', '선수명', '팀명', '득점 (PK)', '도움'];
   const {
     filters,
     competition,
@@ -28,15 +28,11 @@ function League() {
       </header>
       <section className="text-2xl w-2/5 h-29r">
         <div className="flex gap-3 border bg-title-gray p-1 text-center pr-6">
-          {tableHeaders.map((header) => {
-            const cellWidth = header === '팀명' ? 'team' : header === '득실차' ? 'diff' : 'rest';
-
-            return (
-              <div key={header} className={`w-division-${cellWidth}`}>
-                {header}
-              </div>
-            );
-          })}
+          {TABLE_HEADERS.standings.map((header) => (
+            <div key={header} className={`w-division-${headerWidth(header)}`}>
+              {header}
+            </div>
+          ))}
         </div>
         <ul className="text-center h-26r overflow-auto">
           {total.table.map((row) => {
@@ -65,15 +61,11 @@ function League() {
       </section>
       <section className="text-2xl w-2/5 h-29r mt-6">
         <div className="flex gap-3 border bg-title-gray p-1 text-center">
-          {scoreTableHeaders.map((header) => {
-            const cellWidth = header === '선수명' ? 'player' : header === '팀명' ? 'team' : 'rest';
-
-            return (
-              <div key={header} className={`w-score-${cellWidth}`}>
-                {header}
-              </div>
-            );
-          })}
+          {TABLE_HEADERS.scorers.map((header) => (
+            <div key={header} className={`w-score-${headerWidth(header)}`}>
+              {header}
+            </div>
+          ))}
         </div>
         <ul className="text-center h-26r">
           {scorers.map((row, rank) => {
