@@ -7,7 +7,7 @@ interface TableProps<RecordType> {
   records: RecordType[];
 }
 
-type TableType = 'standings' | 'scorers';
+export type TableType = 'standings' | 'scorers';
 
 function Table<RecordType>({ tableType, isOverflow = false, records }: TableProps<RecordType>) {
   return (
