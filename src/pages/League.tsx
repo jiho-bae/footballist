@@ -6,19 +6,19 @@ function League() {
 
   return (
     <div>
-      <section className="text-2xl w-2/5 h-29r overflow-auto">
-        <ul className="text-center">
-          <li className="flex gap-3 border bg-title-gray p-1">
-            {tableHeaders.map((header) => {
-              const cellWidth = header === '팀명' ? 'team' : header === '득실차' ? 'diff' : 'rest';
+      <section className="text-2xl w-2/5 h-29r">
+        <div className="flex gap-3 border bg-title-gray p-1 text-center pr-6">
+          {tableHeaders.map((header) => {
+            const cellWidth = header === '팀명' ? 'team' : header === '득실차' ? 'diff' : 'rest';
 
-              return (
-                <div key={header} className={`w-division-${cellWidth}`}>
-                  {header}
-                </div>
-              );
-            })}
-          </li>
+            return (
+              <div key={header} className={`w-division-${cellWidth}`}>
+                {header}
+              </div>
+            );
+          })}
+        </div>
+        <ul className="text-center h-26r overflow-auto">
           {total.table.map((row) => {
             const { position, team, playedGames, won, draw, lost, points, goalsFor, goalsAgainst, goalDifference } =
               row;

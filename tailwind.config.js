@@ -17,11 +17,13 @@ module.exports = {
       },
       width: {
         'division-team': '30%',
+        'division-diff2': '14%',
         'division-diff': '14%',
         'division-rest': '7%',
       },
       height: {
         '80vh': '80vh',
+        '26r': '26rem',
         '29r': '29rem',
       },
     },
