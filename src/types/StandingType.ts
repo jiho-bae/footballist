@@ -1,12 +1,8 @@
+import { TeamType } from './index';
+
 export interface StandingType {
   position: number;
-  team: {
-    id: number;
-    name: string;
-    shortName: string;
-    tla: string;
-    crest: string;
-  };
+  team: TeamType;
   playedGames: number;
   form: string;
   won: number;
