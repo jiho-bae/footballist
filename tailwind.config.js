@@ -11,6 +11,9 @@ module.exports = {
         'main-red': 'tomato',
         'main-brown': '#854d0e',
         'title-gray': 'rgb(209 213 219)',
+        'match-gray': '#b2bec3',
+        'match-red': '#ff7675',
+        'match-green': '#1dd1a1',
       },
       maxWidth: {
         '4/5': '80%',
