@@ -1,4 +1,4 @@
-import { TeamType, RefreeType } from './index';
+import { TeamType, RefreeType, ScoreType } from './index';
 
 export interface MatchType {
   area: {
@@ -30,18 +30,7 @@ export interface MatchType {
   lastUpdated: string;
   homeTeam: TeamType;
   awayTeam: TeamType;
-  score: {
-    winner: string | null;
-    duration: string;
-    fullTime: {
-      home: string | null;
-      away: string | null;
-    };
-    halfTime: {
-      home: string | null;
-      away: string | null;
-    };
-  };
+  score: ScoreType;
   odds: {
     msg: string;
   };
