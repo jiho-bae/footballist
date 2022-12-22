@@ -14,7 +14,7 @@ export interface MatchType {
     type: string;
     emblem: string;
   };
-  seasons: {
+  season: {
     id: number;
     startDate: string;
     endDate: string;

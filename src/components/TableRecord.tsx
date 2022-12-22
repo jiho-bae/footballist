@@ -1,4 +1,4 @@
-import { StandingType, ScorerType } from '../types';
+import { MatchType, StandingType, ScorerType } from '../types';
 import { TableType } from './Table';
 
 interface TableRecordProps<RecordType> {
@@ -7,7 +7,26 @@ interface TableRecordProps<RecordType> {
   rank: number;
 }
 
-function TableRecord({ record, tableType, rank }: TableRecordProps<StandingType | ScorerType>) {
+function TableRecord({ record, tableType, rank }: TableRecordProps<MatchType | StandingType | ScorerType>) {
+  if ('homeTeam' in record) {
+    const { utcDate, homeTeam, awayTeam, score, referees } = record;
+    return (
+      <li className="flex gap-3 border-x border-b p-1">
+        <div className={`w-${tableType}-rest`}>{utcDate}</div>
+        <div className={`flex items-center text-2xl w-${tableType}-team`}>
+          <img src={homeTeam.crest} alt="team logo" className="w-6 h-6 ml-4 mr-4"></img>
+          {homeTeam.shortName}
+        </div>
+        <div className={`w-${tableType}-rest`}>{score.winner}</div>
+        <div className={`flex items-center text-2xl w-${tableType}-team`}>
+          <img src={awayTeam.crest} alt="team logo" className="w-6 h-6 ml-4 mr-4"></img>
+          {awayTeam.shortName}
+        </div>
+        <div className={`w-${tableType}-rest`}>{referees[0].name}</div>
+      </li>
+    );
+  }
+
   if ('position' in record) {
     const { position, team, playedGames, won, draw, lost, points, goalsFor, goalsAgainst, goalDifference } = record;
 

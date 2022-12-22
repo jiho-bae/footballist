@@ -1,6 +1,6 @@
 import { TABLE_HEADERS } from '../libs/constant';
 import { headerWidth } from '../libs/styleFns';
-import { ScorerType, StandingType } from '../types';
+import { MatchType, ScorerType, StandingType } from '../types';
 import TableRecord from './TableRecord';
 
 interface TableProps<RecordType> {
@@ -9,9 +9,9 @@ interface TableProps<RecordType> {
   records: RecordType[];
 }
 
-export type TableType = 'standings' | 'scorers';
+export type TableType = 'matches' | 'standings' | 'scorers';
 
-function Table({ tableType, isOverflow = false, records }: TableProps<StandingType | ScorerType>) {
+function Table({ tableType, isOverflow = false, records }: TableProps<MatchType | StandingType | ScorerType>) {
   return (
     <section className="text-2xl w-2/5 h-29r">
       <div className={`flex gap-3 border bg-title-gray p-1 text-center ${isOverflow ? 'pr-6' : null}`}>

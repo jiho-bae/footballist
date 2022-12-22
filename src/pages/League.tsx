@@ -2,6 +2,7 @@ import Space from '../components/Space';
 import Table from '../components/Table';
 import division from '../dummy/division.json';
 import topScorers from '../dummy/scorers.json';
+import leagueMatches from '../dummy/matches.json';
 import { TABLE_NAMES } from '../libs/constant';
 
 function League() {
@@ -27,6 +28,7 @@ function League() {
           </div>
         </div>
       </header>
+      <Table tableType={TABLE_NAMES.matches} isOverflow={true} records={leagueMatches.matches} />
       <Table tableType={TABLE_NAMES.standings} isOverflow={true} records={total.table} />
       <Space />
       <Table tableType={TABLE_NAMES.scorers} records={scorers} />
