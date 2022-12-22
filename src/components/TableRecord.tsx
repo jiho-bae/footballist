@@ -1,3 +1,4 @@
+import { getMMDD, getTime } from '../libs/utilFns';
 import { MatchType, StandingType, ScorerType } from '../types';
 import { TableType } from './Table';
 
@@ -10,19 +11,26 @@ interface TableRecordProps<RecordType> {
 function TableRecord({ record, tableType, rank }: TableRecordProps<MatchType | StandingType | ScorerType>) {
   if ('homeTeam' in record) {
     const { utcDate, homeTeam, awayTeam, score, referees } = record;
+    const localeDate = new Date(utcDate);
+    const matchDate = getMMDD(localeDate);
+    const matchTime = getTime(localeDate);
+
     return (
       <li className="flex gap-3 border-x border-b p-1">
-        <div className={`w-${tableType}-rest`}>{utcDate}</div>
+        <div className={`w-${tableType}-plan`}>
+          <div className="text-2xl">{matchDate}</div>
+          <div className="text-lg text-slate-500 font-medium">{matchTime}</div>
+        </div>
         <div className={`flex items-center text-2xl w-${tableType}-team`}>
-          <img src={homeTeam.crest} alt="team logo" className="w-6 h-6 ml-4 mr-4"></img>
+          <img src={homeTeam.crest} alt="team logo" className="w-9 h-9 ml-4 mr-4"></img>
           {homeTeam.shortName}
         </div>
-        <div className={`w-${tableType}-rest`}>{score.winner}</div>
+        <div className={`my-auto w-${tableType}-score`}>{score.winner}</div>
         <div className={`flex items-center text-2xl w-${tableType}-team`}>
-          <img src={awayTeam.crest} alt="team logo" className="w-6 h-6 ml-4 mr-4"></img>
+          <img src={awayTeam.crest} alt="team logo" className="w-9 h-9 ml-4 mr-4"></img>
           {awayTeam.shortName}
         </div>
-        <div className={`w-${tableType}-rest`}>{referees[0].name}</div>
+        <div className={`my-auto w-${tableType}-refree`}>{referees[0].name}</div>
       </li>
     );
   }

@@ -46,3 +46,17 @@ export function getPrevDatesVideos(videos: VideoType[], prevDates: string[]) {
 
   return result;
 }
+
+export function getMMDD(date: Date) {
+  const months = String(date.getMonth() + 1).padStart(2, '0');
+  const dates = String(date.getDate()).padStart(2, '0');
+
+  return [months, dates].join('.');
+}
+
+export function getTime(date: Date) {
+  const hours = String(date.getHours()).padStart(2, '0');
+  const mins = String(date.getMinutes()).padStart(2, '0');
+
+  return [hours, mins].join(':');
+}

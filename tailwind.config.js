@@ -16,8 +16,11 @@ module.exports = {
         '4/5': '80%',
       },
       width: {
+        'matches-team': '25%',
+        'matches-plan': '15%',
+        'matches-refree': '15%',
+        'matches-score': '20%',
         'standings-team': '30%',
-        'standings-diff2': '14%',
         'standings-diff': '14%',
         'standings-rest': '7%',
         'scorers-player': '34%',
