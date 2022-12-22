@@ -1,3 +1,5 @@
+import ScoreBoard from './ScoreBoard';
+
 import { getMMDD, getTime } from '../libs/utilFns';
 import { MatchType, StandingType, ScorerType } from '../types';
 import { TableType } from './Table';
@@ -25,7 +27,9 @@ function TableRecord({ record, tableType, rank }: TableRecordProps<MatchType | S
           <img src={homeTeam.crest} alt="team logo" className="w-9 h-9 ml-4 mr-4"></img>
           {homeTeam.shortName}
         </div>
-        <div className={`my-auto w-${tableType}-score`}>{score.winner}</div>
+        <div className={`my-auto w-${tableType}-score`}>
+          <ScoreBoard score={score} />
+        </div>
         <div className={`flex items-center text-2xl w-${tableType}-team`}>
           <img src={awayTeam.crest} alt="team logo" className="w-9 h-9 ml-4 mr-4"></img>
           {awayTeam.shortName}
