@@ -34,6 +34,8 @@ module.exports = {
         '80vh': '80vh',
         '26r': '26rem',
         '29r': '29rem',
+        '60r': '60rem',
+        '57r': '57rem',
       },
     },
   },

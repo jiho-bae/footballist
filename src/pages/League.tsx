@@ -2,7 +2,7 @@ import Space from '../components/Space';
 import Table from '../components/Table';
 import division from '../dummy/division.json';
 import topScorers from '../dummy/scorers.json';
-import leagueMatches from '../dummy/matches.json';
+import leagueMatches from '../dummy/matches2.json';
 import { TABLE_NAMES } from '../libs/constant';
 
 function League() {
@@ -15,7 +15,7 @@ function League() {
   const { scorers } = topScorers;
 
   return (
-    <main>
+    <main className="px-24">
       <header className="flex items-center gap-5">
         <img src={competition.emblem} alt="league logo" className="w-40 h-40"></img>
         <div>
@@ -28,10 +28,20 @@ function League() {
           </div>
         </div>
       </header>
-      <Table tableType={TABLE_NAMES.matches} isOverflow={true} records={leagueMatches.matches} />
-      <Table tableType={TABLE_NAMES.standings} isOverflow={true} records={total.table} />
-      <Space />
-      <Table tableType={TABLE_NAMES.scorers} records={scorers} />
+      <div className="flex justify-between mb-10">
+        <Table
+          tableType={TABLE_NAMES.matches}
+          isOverflow={true}
+          records={leagueMatches.matches}
+          height="60r"
+          recordHeight="57r"
+        />
+        <div className="w-2/5">
+          <Table tableType={TABLE_NAMES.standings} isOverflow={true} records={total.table} width="full" />
+          <Space />
+          <Table tableType={TABLE_NAMES.scorers} records={scorers} width="full" />
+        </div>
+      </div>
     </main>
   );
 }

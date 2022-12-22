@@ -34,7 +34,7 @@ function TableRecord({ record, tableType, rank }: TableRecordProps<MatchType | S
           <img src={awayTeam.crest} alt="team logo" className="w-9 h-9 ml-4 mr-4"></img>
           {awayTeam.shortName}
         </div>
-        <div className={`my-auto w-${tableType}-refree`}>{referees[0].name}</div>
+        <div className={`my-auto w-${tableType}-refree text-left text-xl`}>{referees[0].name}</div>
       </li>
     );
   }
