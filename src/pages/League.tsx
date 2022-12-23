@@ -33,10 +33,11 @@ function League() {
           tableType={TABLE_NAMES.matches}
           isOverflow={true}
           records={leagueMatches.matches}
+          width="1/2"
           height="60r"
           recordHeight="57r"
         />
-        <div className="w-2/5">
+        <div className="w-5/12">
           <Table tableType={TABLE_NAMES.standings} isOverflow={true} records={total.table} width="full" />
           <Space />
           <Table tableType={TABLE_NAMES.scorers} records={scorers} width="full" />
