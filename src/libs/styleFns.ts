@@ -1,7 +1,10 @@
-import { HEADER_WIDTH_STYLES } from './styleConstant';
+import { CELL_WIDTH_STYLES } from './styleConstant';
 
-export function headerWidthStyle(tableType: string, headerName: string) {
-  return HEADER_WIDTH_STYLES[tableType][headerName] ?? HEADER_WIDTH_STYLES[tableType]['나머지'];
+export function cellWidth(tableType: string, cellName: string) {
+  const cellWidthStyle = CELL_WIDTH_STYLES[tableType];
+  if (!cellWidthStyle) return null;
+
+  return cellWidthStyle[cellName] ?? cellWidthStyle['나머지'];
 }
 
 export function cls(...classNames: Array<string | null>) {

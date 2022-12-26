@@ -1,4 +1,4 @@
-export const HEADER_WIDTH_STYLES: { [key: string]: { [key: string]: string } } = {
+export const CELL_WIDTH_STYLES: { [key: string]: { [key: string]: string } } = {
   matches: {
     일정: 'w-matches-plan',
     홈: 'w-matches-team',

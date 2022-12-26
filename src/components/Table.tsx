@@ -1,5 +1,5 @@
 import { TABLE_HEADERS } from '../libs/constant';
-import { headerWidthStyle } from '../libs/styleFns';
+import { cellWidth } from '../libs/styleFns';
 import { MatchType, ScorerType, StandingType } from '../types';
 import TableRecord from './TableRecord';
 
@@ -26,7 +26,7 @@ function Table({
     <section className={`text-2xl ${width} ${height}`}>
       <div className={`flex gap-3 border bg-title-gray p-1 text-center ${isOverflow ? 'pr-6' : null}`}>
         {TABLE_HEADERS[tableType].map((header) => (
-          <div key={header} className={headerWidthStyle(tableType, header)}>
+          <div key={header} className={`${cellWidth(tableType, header)}`}>
             {header}
           </div>
         ))}
