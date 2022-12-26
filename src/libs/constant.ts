@@ -26,17 +26,27 @@ export const TABLE_HEADERS = {
   scorers: ['순위', '선수명', '팀명', '득점(PK)', '도움'],
 };
 
-export const HEADER_NAME_STYLES: { [key: string]: string } = {
-  팀명: 'team',
-  홈: 'team',
-  원정: 'team',
-  일정: 'plan',
-  선수명: 'player',
-  득실차: 'diff',
-  나머지: 'rest',
-  점수: 'score',
-  '득점(PK)': 'score',
-  심판: 'refree',
+export const HEADER_WIDTH_STYLES: { [key: string]: { [key: string]: string } } = {
+  matches: {
+    일정: 'w-matches-plan',
+    홈: 'w-matches-team',
+    원정: 'w-matches-team',
+    점수: 'w-matches-score',
+    심판: 'w-matches-refree',
+  },
+  standings: {
+    팀명: 'w-standings-team',
+    홈: 'w-standings-team',
+    원정: 'w-standings-team',
+    득실차: 'w-standings-diff',
+    나머지: 'w-standings-rest',
+  },
+  scorers: {
+    선수명: 'w-scorers-player',
+    팀명: 'w-scorers-team',
+    '득점(PK)': 'w-scorers-score',
+    나머지: 'w-scorers-rest',
+  },
 };
 
 export const TABLE_NAMES: { [key: string]: TableType } = {
