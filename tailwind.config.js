@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/pages/**/*.{js,jsx,ts,tsx}', './src/components/**/*.{js,jsx,ts,tsx}'],
+  content: [
+    './src/pages/**/*.{js,jsx,ts,tsx}',
+    './src/components/**/*.{js,jsx,ts,tsx}',
+    './src/libs/**/*.{js,jsx,ts,tsx}',
+  ],
   theme: {
     extend: {
       gridTemplateColumns: {
@@ -28,7 +32,9 @@ module.exports = {
         'standings-rest': '7%',
         'scorers-player': '34%',
         'scorers-team': '30%',
-        'scorers-rest': '12%',
+        'scorers-score': '14%',
+        'scorers-rest': '11%',
+        '43/100': '43%',
       },
       height: {
         '80vh': '80vh',

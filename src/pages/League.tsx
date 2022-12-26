@@ -33,13 +33,14 @@ function League() {
           tableType={TABLE_NAMES.matches}
           isOverflow={true}
           records={leagueMatches.matches}
-          height="60r"
-          recordHeight="57r"
+          width="w-1/2"
+          height="h-60r"
+          recordHeight="h-57r"
         />
-        <div className="w-2/5">
-          <Table tableType={TABLE_NAMES.standings} isOverflow={true} records={total.table} width="full" />
+        <div className="w-5/12">
+          <Table tableType={TABLE_NAMES.standings} isOverflow={true} records={total.table} width="w-full" />
           <Space />
-          <Table tableType={TABLE_NAMES.scorers} records={scorers} width="full" />
+          <Table tableType={TABLE_NAMES.scorers} records={scorers} width="w-full" />
         </div>
       </div>
     </main>
