@@ -1,5 +1,9 @@
-import { HEADER_NAME_STYLES } from './constant';
+import { HEADER_WIDTH_STYLES } from './constant';
 
-export function headerWidth(headerName: string) {
-  return HEADER_NAME_STYLES[headerName] ?? HEADER_NAME_STYLES['나머지'];
+export function headerWidthStyle(tableType: string, headerName: string) {
+  return HEADER_WIDTH_STYLES[tableType][headerName] ?? HEADER_WIDTH_STYLES[tableType]['나머지'];
+}
+
+export function cls(...classNames: Array<string | null>) {
+  return classNames.join(' ');
 }
