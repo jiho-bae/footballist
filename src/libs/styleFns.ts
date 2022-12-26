@@ -1,4 +1,4 @@
-import { HEADER_WIDTH_STYLES } from './constant';
+import { HEADER_WIDTH_STYLES } from './styleConstant';
 
 export function headerWidthStyle(tableType: string, headerName: string) {
   return HEADER_WIDTH_STYLES[tableType][headerName] ?? HEADER_WIDTH_STYLES[tableType]['나머지'];
