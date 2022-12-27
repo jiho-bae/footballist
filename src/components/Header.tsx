@@ -9,24 +9,22 @@ function Header() {
   const TITLE = 'FBlist';
 
   return (
-    <div className="font-mono px-7 py-3 h-24 flex justify-between">
+    <div className="font-mono px-7 py-3 h-20 flex justify-between">
       <div className="flex items-center cursor-pointer h-full text-5xl font-bold">
         <Link to={PAGE_PATH.home}>{`⚽️ ${TITLE}`}</Link>
       </div>
       <nav>
-        <ul className="flex justify-between items-center h-full">
-          <div className="flex justify-between items-center text-3xl gap-5 h-full">
-            {PAGES.map((page, idx) => (
-              <li
-                key={[page, idx].join('-')}
-                className={`h-full leading-loose ${idx === pathIdx ? 'border-b-2 border-main-blue' : null}`}
-              >
-                <Link className="inline-block h-full" to={PAGE_PATH[page]}>
-                  {PAGE_NAME[page]}
-                </Link>
-              </li>
-            ))}
-          </div>
+        <ul className="flex justify-between items-center h-full text-3xl gap-5 ">
+          {PAGES.map((page, idx) => (
+            <li
+              key={[page, idx].join('-')}
+              className={`h-full leading-loose ${idx === pathIdx ? 'border-b-2 border-main-blue' : null}`}
+            >
+              <Link className="inline-block h-full" to={PAGE_PATH[page]}>
+                {PAGE_NAME[page]}
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
     </div>
