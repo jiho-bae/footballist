@@ -7,9 +7,11 @@ html {
 }
 * {
   box-sizing: border-box;
+}
+body {
   -ms-overflow-style: none;
 }
-::-webkit-scrollbar {
+body::-webkit-scrollbar {
   display: none;
 }
 body {
@@ -28,4 +30,12 @@ body {
 a {
   text-decoration: none;
   color: black;
+}
+
+*,
+::before,
+::after {
+  border-width: 0;
+  border-style: solid;
+  border-color: theme('borderColor.DEFAULT', currentColor);
 }
