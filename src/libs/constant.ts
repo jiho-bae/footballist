@@ -31,3 +31,5 @@ export const TABLE_NAMES: { [key: string]: TableType } = {
   standings: 'standings',
   scorers: 'scorers',
 };
+
+export const CNT_OF_REC_VIDEOS = 12;

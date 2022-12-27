@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
 
 import HighlightFilter from '../components/Filter';
 import HighlightGrid from '../components/HighlightGrid';
+import EmptyHighlight from '../components/EmptyHighlight';
+
 import { videoState } from '../recoils';
-import { getPrevDatesFromToday, getPrevDatesVideos } from '../libs/utilFns';
-import { useRecoilValue } from 'recoil';
+import { extractRandomVideos, getPrevDatesFromToday, getPrevDatesVideos } from '../libs/utilFns';
+import { CNT_OF_REC_VIDEOS } from '../libs/constant';
 
 export interface VideoType {
   competition: CompetitionType;
@@ -46,7 +49,11 @@ function Home() {
   return (
     <div className="px-4 py-0">
       <HighlightFilter prevDates={prevDates} selectedDate={selectedDate} onChange={onChangeSelect} />
-      <HighlightGrid displayVideos={displayVideos} />
+      {!displayVideos.length ? (
+        <EmptyHighlight altVideos={extractRandomVideos([...videos], CNT_OF_REC_VIDEOS)} />
+      ) : (
+        <HighlightGrid displayVideos={displayVideos} />
+      )}
     </div>
   );
 }
