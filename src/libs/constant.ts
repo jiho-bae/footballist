@@ -8,10 +8,10 @@ export const PAGE_PATH = {
 };
 
 export const PAGE_NAME = {
-  home: 'HighLights',
-  league: 'League',
-  team: 'Team',
-  highlight: 'Highlight',
+  home: '하이라이트',
+  league: '리그',
+  team: '팀',
+  highlight: '하이라이트',
 };
 
 export const PAGES = ['home', 'league', 'team'] as PAGE_TYPE[];

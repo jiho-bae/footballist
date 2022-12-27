@@ -6,11 +6,12 @@ import { indexOfPathname } from '../libs/utilFns';
 function Header() {
   const { pathname } = useLocation();
   const pathIdx = indexOfPathname(pathname);
+  const TITLE = 'FBlist';
 
   return (
     <div className="font-mono px-7 py-3 h-24 flex justify-between">
-      <div className="cursor-pointer h-full text-6xl font-bold">
-        <Link to={PAGE_PATH.home}>Footballist ⚽️</Link>
+      <div className="flex items-center cursor-pointer h-full text-5xl font-bold">
+        <Link to={PAGE_PATH.home}>{`⚽️ ${TITLE}`}</Link>
       </div>
       <nav>
         <ul className="flex justify-between items-center h-full">
