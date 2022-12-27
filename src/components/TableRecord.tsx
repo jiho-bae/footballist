@@ -8,9 +8,10 @@ interface TableRecordProps<RecordType> {
   record: RecordType;
   tableType: TableType;
   rank: number;
+  isLazy?: boolean;
 }
 
-function TableRecord({ record, tableType, rank }: TableRecordProps<MatchType | StandingType | ScorerType>) {
+function TableRecord({ record, tableType, rank, isLazy }: TableRecordProps<MatchType | StandingType | ScorerType>) {
   if ('homeTeam' in record) {
     const { utcDate, homeTeam, awayTeam, score, referees } = record;
     const localeDate = new Date(utcDate);
@@ -24,14 +25,24 @@ function TableRecord({ record, tableType, rank }: TableRecordProps<MatchType | S
           <div className="text-lg text-slate-500 font-medium">{matchTime}</div>
         </div>
         <div className={`flex items-center text-2xl w-${tableType}-team`}>
-          <img src={homeTeam.crest} alt="team logo" className="w-9 h-9 ml-4 mr-4"></img>
+          <img
+            src={homeTeam.crest}
+            alt="team logo"
+            className="w-9 h-9 ml-4 mr-4"
+            loading={isLazy ? 'lazy' : undefined}
+          ></img>
           {homeTeam.shortName}
         </div>
         <div className={`my-auto w-${tableType}-score`}>
           <ScoreBoard score={score} />
         </div>
         <div className={`flex items-center text-2xl w-${tableType}-team`}>
-          <img src={awayTeam.crest} alt="team logo" className="w-9 h-9 ml-4 mr-4"></img>
+          <img
+            src={awayTeam.crest}
+            alt="team logo"
+            className="w-9 h-9 ml-4 mr-4"
+            loading={isLazy ? 'lazy' : undefined}
+          ></img>
           {awayTeam.shortName}
         </div>
         <div className={`my-auto w-${tableType}-refree text-left text-xl`}>{referees[0].name}</div>
@@ -46,7 +57,12 @@ function TableRecord({ record, tableType, rank }: TableRecordProps<MatchType | S
       <li key={`${rank}${team}`} className="flex gap-3 border-x border-b p-1">
         <div className={`w-${tableType}-rest`}>{position}</div>
         <div className={`flex items-center text-2xl w-${tableType}-team`}>
-          <img src={team.crest} alt="team logo" className="w-6 h-6 ml-4 mr-4"></img>
+          <img
+            src={team.crest}
+            alt="team logo"
+            className="w-6 h-6 ml-4 mr-4"
+            loading={isLazy ? 'lazy' : undefined}
+          ></img>
           {team.shortName}
         </div>
         <div className={`w-${tableType}-rest`}>{playedGames}</div>

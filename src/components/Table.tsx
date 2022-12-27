@@ -22,6 +22,8 @@ function Table({
   isOverflow = false,
   records,
 }: TableProps<MatchType | StandingType | ScorerType>) {
+  const CNT_OF_PRELOAD_LOGO = 10;
+
   return (
     <section className={`text-2xl ${width} ${height}`}>
       <div className={`flex gap-3 border bg-title-gray p-1 text-center ${isOverflow ? 'pr-6' : null}`}>
@@ -33,7 +35,13 @@ function Table({
       </div>
       <ul className={`text-center ${recordHeight} ${isOverflow ? 'overflow-auto' : null}`}>
         {records.map((record, idx) => (
-          <TableRecord key={`${tableType}${idx}`} record={record} tableType={tableType} rank={idx + 1} />
+          <TableRecord
+            key={`${tableType}${idx}`}
+            record={record}
+            tableType={tableType}
+            rank={idx + 1}
+            isLazy={idx >= CNT_OF_PRELOAD_LOGO}
+          />
         ))}
       </ul>
     </section>
