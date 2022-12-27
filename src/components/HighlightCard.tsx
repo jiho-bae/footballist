@@ -8,9 +8,9 @@ function HighlightCard({ video, idx, isLazy }: { video: VideoType; idx: number; 
 
   return (
     <Link to={`/highlights/${idx}`} state={{ video }} className="flex justify-center items-center">
-      <section className="min-w-fit w-1/4 h-96 cursor-pointer">
+      <section className="min-w-fit w-1/4 h-96 cursor-pointer ">
         <img
-          className="hover:opacity-70 bg-zinc-300 bg-center bg-cover w-full h-80"
+          className="hover:opacity-70 bg-zinc-300 bg-center bg-cover w-full h-80 rounded-2xl"
           src={thumbnail}
           alt="highlight video"
           loading={isLazy ? 'lazy' : undefined}
