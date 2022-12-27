@@ -3,8 +3,8 @@ interface SpaceProps {
   height?: string;
 }
 
-function Space({ width = '6', height = '6' }: SpaceProps) {
-  return <div className={`w-${width} h-${height}`}></div>;
+function Space({ width = 'w-6', height = 'h-6' }: SpaceProps) {
+  return <div className={`${width} ${height}`}></div>;
 }
 
 export default Space;

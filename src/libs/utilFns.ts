@@ -60,3 +60,21 @@ export function getTime(date: Date) {
 
   return [hours, mins].join(':');
 }
+
+export function randomIdx(size: number) {
+  return Math.floor(Math.random() * size);
+}
+
+export function extractRandomVideos(videos: VideoType[], size: number) {
+  const results = [];
+
+  while (results.length < size) {
+    const cnt = size - results.length;
+    const idx = randomIdx(cnt);
+
+    const extractVideo = videos.splice(idx, 1)[0];
+    results.push(extractVideo);
+  }
+
+  return results;
+}

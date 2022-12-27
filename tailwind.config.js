@@ -14,6 +14,7 @@ module.exports = {
         'main-blue': 'cornflowerblue',
         'main-red': 'tomato',
         'main-brown': '#854d0e',
+        'main-gray': 'rgb(107 114 128)',
         'title-gray': 'rgb(209 213 219)',
         'match-gray': '#b2bec3',
         'match-red': '#ff7675',

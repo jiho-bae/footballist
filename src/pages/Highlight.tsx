@@ -10,14 +10,16 @@ function Highlight() {
 
   return video.date ? (
     <div className="mt-5 py-0 px-24">
-      <div className="my-4 px-2 py-2 w-full flex text-4xl justify-between">
+      <div className="my-4 px-2 w-full flex text-4xl justify-between">
         <Link to="/" className="text-black">
           <BiArrowBack />
         </Link>
         <h1 className="font-semibold">{video.title.split('-').join('vs')}</h1>
         <div></div>
       </div>
-      <div dangerouslySetInnerHTML={{ __html: video.videos[0].embed }}></div>
+      <section className="flex justify-center bg-black">
+        <div className="w-5/6 bg-gray-300" dangerouslySetInnerHTML={{ __html: video.videos[0].embed }}></div>
+      </section>
       <div className="flex flex-col">
         <span className="text-zinc-500 text-2xl mx-0 my-3 pb-3 ">{dateToLocaleString(video.date)}</span>
         <h3 className="text-2xl ">{video.competition.name.split(':').join(' ')}</h3>
