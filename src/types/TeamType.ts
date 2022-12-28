@@ -4,4 +4,5 @@ export interface TeamType {
   shortName: string;
   tla: string;
   crest: string;
+  website?: string;
 }
