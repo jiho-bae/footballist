@@ -19,6 +19,7 @@ module.exports = {
         'match-gray': '#b2bec3',
         'match-red': '#ff7675',
         'match-green': '#1dd1a1',
+        'card-brown': '#F6F3F2',
       },
       maxWidth: {
         '4/5': '80%',

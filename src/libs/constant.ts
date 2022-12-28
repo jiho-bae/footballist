@@ -33,3 +33,13 @@ export const TABLE_NAMES: { [key: string]: TableType } = {
 };
 
 export const CNT_OF_REC_VIDEOS = 12;
+
+export const LEAGUE_CODE = {
+  premierLeague: 'PL',
+  primeraDivision: 'PD',
+  bundesliga: 'BL1',
+  serieA: 'SA',
+  ligue1: 'FL1',
+};
+
+export const PLAYER_RECORD_NAMES = ['출생', '국적', '소속', '포지션', '등번호'];
