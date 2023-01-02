@@ -10,6 +10,7 @@ interface TableProps<RecordType> {
   recordHeight?: string;
   isOverflow?: boolean;
   records: RecordType[];
+  onClickRecord?: (id: number) => void;
 }
 
 export type TableType = 'matches' | 'standings' | 'scorers';
@@ -21,6 +22,7 @@ function Table({
   tableType,
   isOverflow = false,
   records,
+  onClickRecord,
 }: TableProps<MatchType | StandingType | ScorerType>) {
   const CNT_OF_PRELOAD_LOGO = 10;
 
@@ -41,6 +43,7 @@ function Table({
             tableType={tableType}
             rank={idx + 1}
             isLazy={idx >= CNT_OF_PRELOAD_LOGO}
+            onClickRecord={onClickRecord}
           />
         ))}
       </ul>

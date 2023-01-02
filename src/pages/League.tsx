@@ -1,11 +1,19 @@
 import Space from '../components/Space';
 import Table from '../components/Table';
+import Modal from '../components/Modal';
+import PlayerCard from '../components/PlayerCard';
+
+import useModal from '../hooks/useModal';
+import { TABLE_NAMES } from '../libs/constant';
+
 import division from '../dummy/division.json';
 import topScorers from '../dummy/scorers.json';
 import leagueMatches from '../dummy/matches2.json';
-import { TABLE_NAMES } from '../libs/constant';
+import player from '../dummy/player.json';
+import { useCallback } from 'react';
 
 function League() {
+  const [isOpen, toggleModal] = useModal();
   const {
     filters,
     competition,
@@ -13,6 +21,15 @@ function League() {
     standings: [total],
   } = division;
   const { scorers } = topScorers;
+
+  const onClickScorerName = useCallback(
+    (id: number) => {
+      // load data using player id
+
+      toggleModal();
+    },
+    [toggleModal]
+  );
 
   return (
     <main className="px-24">
@@ -40,9 +57,12 @@ function League() {
         <div className="w-5/12">
           <Table tableType={TABLE_NAMES.standings} isOverflow={true} records={total.table} width="w-full" />
           <Space />
-          <Table tableType={TABLE_NAMES.scorers} records={scorers} width="w-full" />
+          <Table tableType={TABLE_NAMES.scorers} records={scorers} width="w-full" onClickRecord={onClickScorerName} />
         </div>
       </div>
+      <Modal isOpen={isOpen} onClickBlackBackground={toggleModal}>
+        <PlayerCard player={player} />
+      </Modal>
     </main>
   );
 }

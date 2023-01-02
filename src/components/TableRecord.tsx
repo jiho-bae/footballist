@@ -1,17 +1,24 @@
 import ScoreBoard from './ScoreBoard';
+import { TableType } from './Table';
 
 import { getMMDD, getTime } from '../libs/utilFns';
 import { MatchType, StandingType, ScorerType } from '../types';
-import { TableType } from './Table';
 
 interface TableRecordProps<RecordType> {
   record: RecordType;
   tableType: TableType;
   rank: number;
   isLazy?: boolean;
+  onClickRecord?: (id: number) => void;
 }
 
-function TableRecord({ record, tableType, rank, isLazy }: TableRecordProps<MatchType | StandingType | ScorerType>) {
+function TableRecord({
+  record,
+  tableType,
+  rank,
+  isLazy,
+  onClickRecord,
+}: TableRecordProps<MatchType | StandingType | ScorerType>) {
   if ('homeTeam' in record) {
     const { utcDate, homeTeam, awayTeam, score, referees } = record;
     const localeDate = new Date(utcDate);
@@ -80,7 +87,13 @@ function TableRecord({ record, tableType, rank, isLazy }: TableRecordProps<Match
   const { player, team, goals, assists, penalties } = record;
 
   return (
-    <li key={player.name} className="flex gap-3 border-x border-b p-1">
+    <li
+      key={player.name}
+      className="flex gap-3 border-x border-b p-1"
+      onClick={() => {
+        onClickRecord && onClickRecord(player.id);
+      }}
+    >
       <div className={`w-${tableType}-rest`}>{rank}</div>
       <div className={`w-${tableType}-player text-left pl-4`}>{player.name}</div>
       <div className={`w-${tableType}-team flex items-center text-2xl`}>
