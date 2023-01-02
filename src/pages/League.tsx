@@ -61,7 +61,7 @@ function League() {
         </div>
       </div>
       <Modal isOpen={isOpen} onClickBlackBackground={toggleModal}>
-        <PlayerCard player={player} />
+        <PlayerCard player={player} onClickCancel={toggleModal} />
       </Modal>
     </main>
   );
