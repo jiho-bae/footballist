@@ -89,7 +89,7 @@ function TableRecord({
   return (
     <li
       key={player.name}
-      className="flex gap-3 border-x border-b p-1"
+      className={`flex gap-3 border-x border-b p-1 ${onClickRecord && 'cursor-pointer'}`}
       onClick={() => {
         onClickRecord && onClickRecord(player.id);
       }}
