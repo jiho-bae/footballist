@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
 
+import MainLayout from '../components/MainLayout';
 import HighlightFilter from '../components/Filter';
 import HighlightGrid from '../components/HighlightGrid';
 import EmptyHighlight from '../components/EmptyHighlight';
@@ -47,14 +48,14 @@ function Home() {
   }
 
   return (
-    <div className="px-4 py-0">
+    <MainLayout>
       <HighlightFilter prevDates={prevDates} selectedDate={selectedDate} onChange={onChangeSelect} />
       {!displayVideos.length ? (
         <EmptyHighlight altVideos={extractRandomVideos([...videos], CNT_OF_REC_VIDEOS)} />
       ) : (
         <HighlightGrid displayVideos={displayVideos} />
       )}
-    </div>
+    </MainLayout>
   );
 }
 

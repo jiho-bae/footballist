@@ -1,7 +1,10 @@
+import { useCallback } from 'react';
+
+import MainLayout from '../components/MainLayout';
+import PlayerCard from '../components/PlayerCard';
 import Space from '../components/Space';
 import Table from '../components/Table';
 import Modal from '../components/Modal';
-import PlayerCard from '../components/PlayerCard';
 
 import useModal from '../hooks/useModal';
 import { TABLE_NAMES } from '../libs/constant';
@@ -10,7 +13,6 @@ import division from '../dummy/division.json';
 import topScorers from '../dummy/scorers.json';
 import leagueMatches from '../dummy/matches2.json';
 import player from '../dummy/player.json';
-import { useCallback } from 'react';
 
 function League() {
   const [isOpen, toggleModal] = useModal();
@@ -32,7 +34,7 @@ function League() {
   );
 
   return (
-    <main className="px-24">
+    <MainLayout>
       <header className="flex items-center gap-5">
         <img src={competition.emblem} alt="league logo" className="w-40 h-40"></img>
         <div>
@@ -61,9 +63,9 @@ function League() {
         </div>
       </div>
       <Modal isOpen={isOpen} onClickBlackBackground={toggleModal}>
-        <PlayerCard player={player} onClickCancel={toggleModal} />
+        <PlayerCard player={player} onClickCancel={toggleModal} isInModal={true} />
       </Modal>
-    </main>
+    </MainLayout>
   );
 }
 
