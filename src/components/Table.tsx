@@ -27,7 +27,7 @@ function Table({
   const CNT_OF_PRELOAD_LOGO = 10;
 
   return (
-    <section className={`text-2xl ${width} ${height}`}>
+    <section className={`text-2xl ${width} ${height} min-w-mobile`}>
       <div className={`flex gap-3 border bg-title-gray p-1 text-center ${isOverflow ? 'pr-6' : null}`}>
         {TABLE_HEADERS[tableType].map((header) => (
           <div key={header} className={`${cellWidth(tableType, header)}`}>

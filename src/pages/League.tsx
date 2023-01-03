@@ -47,7 +47,7 @@ function League() {
           </div>
         </div>
       </header>
-      <div className="flex justify-between mb-10">
+      <div className="flex flex-wrap justify-between mb-10">
         <Table
           tableType={TABLE_NAMES.matches}
           isOverflow={true}

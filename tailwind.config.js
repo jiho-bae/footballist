@@ -22,6 +22,9 @@ module.exports = {
         'card-brown': '#F6F3F2',
         'modal-black': 'rgba(255,255,255,0.7)',
       },
+      minWidth: {
+        mobile: '380px',
+      },
       maxWidth: {
         '4/5': '80%',
       },
